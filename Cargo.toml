@@ -2,6 +2,11 @@
 name = "udict"
 version = "0.1.0"
 edition = "2021"
+readme = "README.md"
+repository = "https://github.com/lsmb/udict"
+description = "A CLI tool for fetching Urban Dictionary definitions"
+homepage = "https://github.com/lsmb/udict"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
