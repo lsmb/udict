@@ -6,6 +6,10 @@
 A CLI tool for fetching Urban Dictionary definitions.
 </p>
 
+<p align=center>
+  <img src=https://user-images.githubusercontent.com/69675545/164534602-3a0be421-42c5-47f9-a783-1ee040f8b522.gif>
+</p>
+
 # Installation
 
 ### cargo
