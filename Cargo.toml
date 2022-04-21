@@ -1,0 +1,14 @@
+[package]
+name = "udict"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+termimad = "0.14"
+termion = "*"
+scraper = "0.12.0"
+textwrap = "0.15"
