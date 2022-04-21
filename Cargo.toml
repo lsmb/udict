@@ -7,6 +7,7 @@ repository = "https://github.com/lsmb/udict"
 description = "A CLI tool for fetching Urban Dictionary definitions"
 homepage = "https://github.com/lsmb/udict"
 license = "MIT"
+authors = ["lsmb <lsmbc@protonmail.com>"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
