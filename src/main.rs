@@ -1,5 +1,6 @@
 use scraper::{Html, Selector};
 use std::env;
+use std::process;
 use termion::{color, style};
 
 #[tokio::main]
@@ -8,7 +9,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut definition_count: usize = 1;
     let term;
 
-    if args[1].parse::<u16>().is_ok() {
+    if args[1].to_string() == "--help" {
+        println!("Usage: udict [number of terms] <term>");
+        process::exit(1);
+    } else if args[1].parse::<u16>().is_ok() {
         definition_count = args[1].parse().unwrap();
         term = args[2..].join(" ");
     } else {
@@ -24,11 +28,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     .await?;
 
     let body = Html::parse_document(&resp);
+
+    let suggestions_sel = Selector::parse(".suggestions").unwrap();
     let definition_sel = Selector::parse(".definition").unwrap();
     let word_sel = Selector::parse(".word").unwrap();
     let meaning_sel = Selector::parse(".meaning").unwrap();
     let examples_sel = Selector::parse(".example").unwrap();
     let contributor_sel = Selector::parse(".contributor").unwrap();
+
+    for element in body.select(&suggestions_sel) {
+        let element_text: String = element.text().collect();
+        if element_text.contains("Sorry, we couldn't find") {
+            println!("Unforunately this definition doesn't exist.");
+            process::exit(1);
+        }
+    }
 
     for (i, element) in body
         .select(&definition_sel)
