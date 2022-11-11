@@ -8,8 +8,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = env::args().collect();
     let mut definition_count: usize = 1;
     let term;
-
-    if args[1].to_string() == "--help" {
+    
+    if args.len()<2||args[1].to_string() == "--help" {
         println!("Usage: udict [number of terms] <term>");
         process::exit(1);
     } else if args[1].parse::<u16>().is_ok() {
